@@ -131,16 +131,16 @@ router.post('/publicar', verificarToken, requiereRol('cliente'), subirDocsYFotos
     if (!titulo || !direccion || b.latitud === '' || b.longitud === '' || !b.precio_hora) {
       return res.status(400).json({ error: 'Faltan campos obligatorios del espacio' });
     }
-    if (isNaN(lat) || lat < -90 || lat > 90 || isNaN(lng) || lng < -180 || lng > 180) {
+    if (Number.isNaN(lat) || lat < -90 || lat > 90 || Number.isNaN(lng) || lng < -180 || lng > 180) {
       return res.status(400).json({ error: 'Latitud o longitud fuera de rango' });
     }
-    if (isNaN(precio) || precio <= 0) {
+    if (Number.isNaN(precio) || precio <= 0) {
       return res.status(400).json({ error: 'El precio por hora debe ser mayor a 0' });
     }
     if (b.capacidad_vehiculos === undefined || b.capacidad_vehiculos === '' || !Number.isInteger(capacidad) || capacidad <= 0) {
       return res.status(400).json({ error: 'La capacidad de vehículos debe ser un número entero mayor a 0' });
     }
-    if (b.largo_metros === '' || b.ancho_metros === '' || isNaN(largo) || largo <= 0 || isNaN(ancho) || ancho <= 0) {
+    if (b.largo_metros === '' || b.ancho_metros === '' || Number.isNaN(largo) || largo <= 0 || Number.isNaN(ancho) || ancho <= 0) {
       return res.status(400).json({ error: 'El largo y el ancho deben ser mayores a 0' });
     }
 

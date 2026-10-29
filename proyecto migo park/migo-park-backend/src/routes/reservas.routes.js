@@ -20,7 +20,7 @@ router.post('/', verificarToken, requiereRol('cliente'), async (req, res) => {
 
   const inicio = new Date(fecha_inicio);
   const fin = new Date(fecha_fin);
-  if (isNaN(inicio) || isNaN(fin) || fin <= inicio) {
+  if (Number.isNaN(inicio.getTime()) || Number.isNaN(fin.getTime()) || fin <= inicio) {
     return res.status(400).json({ error: 'Fechas inválidas' });
   }
   if (inicio < new Date(Date.now() - 60 * 1000)) {
