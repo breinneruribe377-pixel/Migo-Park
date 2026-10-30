@@ -27,7 +27,7 @@ async function enviarRecordatorios() {
 // Revisa cada minuto (se llama desde server.js)
 function iniciarRecordatorios() {
   const correr = () => enviarRecordatorios().catch((err) => console.error('Error en recordatorios:', err));
-  correr();
+  void correr();
   return setInterval(correr, 60 * 1000);
 }
 
